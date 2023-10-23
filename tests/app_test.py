@@ -1,4 +1,5 @@
-from project.app import app
+from project.app import app, init_db
+from pathlib import Path
 
 
 def test_index():
@@ -7,3 +8,9 @@ def test_index():
 
     assert response.status_code == 200
     assert response.data == b"Hello, World!"
+
+
+def test_database():
+    # initialize the database to make sure test can run independently
+    init_db()
+    assert Path("flaskr.db").is_file()
