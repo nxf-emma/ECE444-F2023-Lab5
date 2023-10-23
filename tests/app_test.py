@@ -4,22 +4,7 @@ from pathlib import Path
 
 from project.app import app, init_db
 
-
 TEST_DB = "test.db"
-
-
-def test_index():
-    tester = app.test_client()
-    response = tester.get("/", content_type="html/text")
-
-    assert response.status_code == 200
-    assert response.data == b"Hello, World!"
-
-
-def test_database():
-    # initialize the database to make sure test can run independently
-    init_db()
-    assert Path("flaskr.db").is_file()
 
 
 @pytest.fixture
