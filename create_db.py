@@ -11,4 +11,3 @@ with app.app_context():
 
     # commit the changes
     db.session.commit()
-    
